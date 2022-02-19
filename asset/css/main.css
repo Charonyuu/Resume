@@ -148,6 +148,7 @@ body{
     text-align: center;
     color: #fff;
     border-radius: 6px; 
+    width: 0%;
 }
 .skill>p{
     margin-bottom: 0px;
