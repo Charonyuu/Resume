@@ -37,8 +37,7 @@
                     我叫江承祐，⽬前就讀輔仁⼤學資管系⼤三，在大學之前，一直不確定自己未來的目標，曾經想要讀經濟系，最後選擇了資管系
                     在大一時學習了前端語法html、css、javascript，發現了自己的興趣，在之後碰了php語法，學習了後端語法，練習了CRUD及連接資料庫mySQL
                     ，越來越覺得網頁的有趣之處，在大三的上學習開始了專題及前端框架的學習，寫專題時使用了react native，才發現原來還可以用javascript做
-                    手機的app，而且還是跨平台的，激起了我濃厚的興趣，在其他課程中，也學習了react框架，發現了框架的便利及好玩的地方，對我來說，寫前端不像
-                    是工作，反而像是一個娛樂興趣。
+                    手機的app，而且還是跨平台的，激起了我濃厚的興趣，在其他課程中，也學習了react框架，發現了框架的便利及好玩的地方，對我來說，寫前端不像是工作，反而像是一個娛樂興趣。
                 </p>
             </div>
             
@@ -133,27 +132,30 @@
     var id = setInterval(frame, 8);//重複執行進度條function
     var i = 0; //第幾行
     var skill = [90,65,70,60,60,50,70,55,30]
-    console
-    // $(".title").click(function(){
-        function frame() {  
-            if(i < 9){
-                var progressBar = document.getElementById("progressBarInner"+ i)
+    function frame() {  
+        if(i < 9){
+            var progressBar = $("#progressBarInner"+ i)
+            // var progressBar = document.getElementById("progressBarInner"+ i)
+            var maxWidth = skill[i]
+            if(width >= maxWidth) { 
+                i++; //跳到下一行
+                width = 1; //重置width
+                var progressBar = $("#progressBarInner"+ i)
+                // var progressBar = document.getElementById("progressBarInner"+ i) //抓取下一行的進度條
                 var maxWidth = skill[i]
-                if(width >= maxWidth) { 
-                    i++; //跳到下一行
-                    width = 1; //重置width
-                    var progressBar = document.getElementById("progressBarInner"+ i) //抓取下一行的進度條
-                    var maxWidth = skill[i]
-                }
-                else{//do animation 跑進度條
-                    width++; 
-                    progressBar.style.width = width + '%'; 
-                    progressBar.innerHTML = width * 1  + '%';
-                }
-            }else{
-                clearInterval(id) //清除function
             }
+            else{//do animation 跑進度條
+                width++; 
+                // progressBar.style.width = width + '%'; 
+                // progressBar.innerHTML = width + '%';
+                progressBar.css('width', width + '%');
+                progressBar.text(width + '%');  
+            }
+        }else{
+            clearInterval(id) //清除function
         }
-    // })
+    }
+
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </html>
